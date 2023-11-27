@@ -1,4 +1,4 @@
-package com.task.dataspringworkers;
+package com.task.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
