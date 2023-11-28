@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Setter
 @Getter
 @Entity
@@ -13,7 +15,7 @@ import lombok.Setter;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "address_address_id_seq")
     @Column(name = "address_id")
     private Long addressId;
     @Column(nullable = false, length = 100)
@@ -25,6 +27,20 @@ public class Address {
     private String apartment; // квартира
     @Column(length = 50)
     private String country;
+    @Column(name = "worker_id")
+    private Long workerId;
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(addressId, address.addressId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(addressId);
+    }
 }
