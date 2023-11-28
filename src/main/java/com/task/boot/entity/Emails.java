@@ -13,9 +13,12 @@ import java.util.Objects;
 @Entity
 @Table(name = Tables.EMAILS, schema = Schemas.PUBLIC)
 public class Emails {
+    public Emails() {
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "emails_email_id_seq")
-    @Column(name = "emails_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emails_emails_id_seq")
+    @Column(name = "emails_id",nullable = false)
     private Long emailsId;
     @Column(length = 50)
     private String work;

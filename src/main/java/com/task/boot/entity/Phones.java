@@ -14,9 +14,12 @@ import java.util.Objects;
 @Table(name = Tables.PHONES, schema = Schemas.PUBLIC)
 public class Phones {
 
+    public Phones() {
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "phones_phones_id_seq")
-    @Column(name = "phones_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phones_phones_id_seq")
+    @Column(name = "phones_id",nullable = false)
     private Long phonesId;
     @Column(length = 50)
     private String work;

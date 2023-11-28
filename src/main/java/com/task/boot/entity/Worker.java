@@ -16,9 +16,12 @@ import java.util.Objects;
 @Table(name = Tables.WORKER, schema = Schemas.PUBLIC)
 public class Worker {
 
+    public Worker() {
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator =  "worker_worker_id_seq")
-    @Column(name = "worker_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =  "worker_worker_id_seq")
+    @Column(name = "worker_id",nullable = false)
     private Long workerId;
     @Column(length = 50)
     private String name;
@@ -29,11 +32,11 @@ public class Worker {
     @Column(name = "gender")
     private String gender;
     private String department;
-    @OneToMany(mappedBy = "worker_id")
+    @OneToMany(mappedBy = "workerId")
     private List<Address> address;
-    @OneToMany(mappedBy = "worker_id")
+    @OneToMany(mappedBy = "workerId")
     private List<Emails> emails;
-    @OneToMany(mappedBy = "worker_id")
+    @OneToMany(mappedBy = "workerId")
     private List<Phones> phones;
 
     @Override

@@ -13,10 +13,12 @@ import java.util.Objects;
 @Entity
 @Table(name = Tables.ADDRESS, schema = Schemas.PUBLIC)
 public class Address {
+    public Address() {
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "address_address_id_seq")
-    @Column(name = "address_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_address_id_seq")
+    @Column(name = "address_id",nullable = false)
     private Long addressId;
     @Column(nullable = false, length = 100)
     private String city;
